@@ -4,7 +4,6 @@
 2. Front yard lighting.
 3. AC control system.
 4. Gate control system.
-5. Conclusion.
 ## Introduction:
 Smart home technology is a technology concerned with automating homes. For example instead of turning lights manually, lights can be programmed to turn on by itself  when it gets dark or instead of 
 setting the temperature at which your AC or heater operate manually, they can be programmed to turn on or off depending on room temperature.
@@ -44,3 +43,32 @@ The temperature sensor sends the current temperature value to master microcontro
 characters to the slave microcontroller. 'b' indicates that the temperature is equal to 21 celsius and 'c' indicates that the temperature has exceeded 22 celsius. The slave microcintroller recieves these characters and acts accordingly. If the slave recieves 'b' it will turn on the motor with a 50% duty cycle. If the slave recieves 'c' it will turn on the motor with a 75% duty cycle. Otherwise the dc motor remains off. The TC74 temperature sensor, master microcontroller and slave microcontroller communicate with each other using I2C communication protocol. 
 ## Gate control system:
 ![Gate control system](https://github.com/omarabdallah23/smart_home/assets/143711494/021f6746-cc7c-4f72-a2f1-d158834dd342)
+
+This system consists of the following:
+1. Slave microcontroller.
+2. Button.
+3.  L298 motor driver.
+4.  DC motor.
+
+By pressing the button, you change the current state of the gate. If the gate was initially open it closes and vice versca. The last state of the gate is saved in the internal EEPROM of the slave microcontroller.
+The motor changes its direction of motion whether clockwise or counter-clockwise each time the button is pressed.
+
+## Notes and warnings:
+> [!NOTE]
+> This code was written with a software layer-based approach, meaning that the code consists of 3 layers :
+> 1. MCAL layer which contains the modules for the microcontroller's internal peripherals.
+> 2. ECU layer which contains the modules for a number of external devices that can be connected to the microcontroller.
+> 3. Application layer which contains the actual code of the project itself
+
+> This approach provides isolation between each layer and the layers below it, meaning that you can change the application layer code without modifying the MCAL or ECU layers.
+
+> [!NOTE]
+> The drivers used, whether in MCAL or ECU layer, were programmed from scartch for my own educational purposes however, you don't have to program the drivers yourself as
+> MPLAB X IDE provides built-in drivers which will save you a lot of time.
+
+> [!IMPORTANT]
+> The front yard lighting sytem needs to be placed in a shade-free environmet to avoid wrong operation of the system.
+
+> [!CAUTION]
+> Connecting the PWM to the slave microcontroller will increase the CPU load significantly which in turn decrease the speed of the simulation. If you wish to test components other than the PWM, i suggest
+> disconnecting the PWM pin first. 
