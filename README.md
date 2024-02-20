@@ -64,7 +64,7 @@ The motor changes its direction of motion whether clockwise or counter-clockwise
 
 > [!NOTE]
 > The drivers used, whether in MCAL or ECU layer, were programmed from scartch for my own educational purposes however, you don't have to program the drivers yourself as
-> MPLAB X IDE provides built-in drivers which will save you a lot of time.
+> MPLAB X IDE provides built-in drivers which will save you a lot of time. I've also programmed drivers for other internal peripherals and external ECUs that were not used in the project.
 
 > [!IMPORTANT]
 > The front yard lighting sytem needs to be placed in a shade-free environmet to avoid wrong operation of the system.
